@@ -28,17 +28,28 @@ This master reference contains all standalone OS Lab programs with their complet
 - [13. Dining Philosophers](#13-dining-philosophers) (dining_philosophers.c)
 - [14. Producer-Consumer](#14-producer-consumer) (producer_consumer.c)
 - [15. Readers-Writers](#15-readers-writers) (readers_writers.c)
-- [16. Shared Memory (POSIX IPC)](#16-shared-memory-posix-ipc) (shared_memory.c)
+- [16. Producer-Consumer Using Pipes](#16-producer-consumer-using-pipes) (producer_consumer_pipe.c)
+- [17. Readers-Writers Using Processes and Pipes](#17-readers-writers-using-processes-and-pipes) (readers_writers_process.c)
+- [18. Shared Memory (POSIX IPC)](#18-shared-memory-posix-ipc) (shared_memory.c)
 
 ### Deadlock Avoidance
-- [17. Banker's Algorithm](#17-bankers-algorithm) (bankers_algorithm.c)
+- [19. Banker's Algorithm](#19-bankers-algorithm) (bankers_algorithm.c)
 
 ### File System System Calls
-- [18. File System Calls](#18-file-system-calls) (file_system_calls.c)
+- [20. File System Calls](#20-file-system-calls) (file_system_calls.c)
 
 ### Process & Thread Management
-- [19. Process Creation](#19-process-creation) (process_creation.c)
-- [20. Thread Creation](#20-thread-creation) (thread_creation.c)
+- [21. Process Creation](#21-process-creation) (process_creation.c)
+- [22. Thread Creation](#22-thread-creation) (thread_creation.c)
+- [23. Orphan and Zombie Processes](#23-orphan-and-zombie-processes) (orphan_zombie.c)
+
+### Disk Scheduling
+- [24. FCFS Disk Scheduling](#24-fcfs-disk-scheduling) (Disk Scheduling\fcfs_disk_scheduling.c)
+- [25. SSTF Disk Scheduling](#25-sstf-disk-scheduling) (Disk Scheduling\sstf_disk_scheduling.c)
+- [26. SCAN Disk Scheduling](#26-scan-disk-scheduling) (Disk Scheduling\scan_disk_scheduling.c)
+- [27. C-SCAN Disk Scheduling](#27-c-scan-disk-scheduling) (Disk Scheduling\cscan_disk_scheduling.c)
+- [28. LOOK Disk Scheduling](#28-look-disk-scheduling) (Disk Scheduling\look_disk_scheduling.c)
+- [29. C-LOOK Disk Scheduling](#29-c-look-disk-scheduling) (Disk Scheduling\clook_disk_scheduling.c)
 
 ---
 
@@ -47,7 +58,7 @@ This master reference contains all standalone OS Lab programs with their complet
 ## 1. Non-Preemptive FCFS
 **File:** CPU Scheduling Non-Preemptive\non_preemptive_fcfs.c
 
-`c
+```c
 /*
  * Non Preemptive FCFS CPU Scheduling
  * Compile: gcc non_preemptive_fcfs.c -o non_preemptive_fcfs
@@ -162,14 +173,14 @@ P4    3    5    26   23   18
 Average Waiting Time     = 8.75
 Average Turnaround Time  = 15.25
 */
-`
+```
 
 ---
 
 ## 2. Non-Preemptive SJF
 **File:** CPU Scheduling Non-Preemptive\non_preemptive_sjf.c
 
-`c
+```c
 /*
  * Non Preemptive SJF CPU Scheduling
  * Compile: gcc non_preemptive_sjf.c -o non_preemptive_sjf
@@ -299,14 +310,14 @@ P3    2    9    26   24   15
 Average Waiting Time     = 7.75
 Average Turnaround Time  = 14.25
 */
-`
+```
 
 ---
 
 ## 3. Non-Preemptive Priority
 **File:** CPU Scheduling Non-Preemptive\non_preemptive_priority.c
 
-`c
+```c
 /*
  * Non Preemptive Priority CPU Scheduling (larger priority number = higher priority)
  * Compile: gcc non_preemptive_priority.c -o non_preemptive_priority
@@ -439,7 +450,7 @@ P2    1    3    2    13   12   9
 Average Waiting Time     = 3.25
 Average Turnaround Time  = 6.50
 */
-`
+```
 
 ---
 
@@ -448,7 +459,7 @@ Average Turnaround Time  = 6.50
 ## 4. Preemptive SRTF
 **File:** CPU Scheduling Preemptive\preemptive_srtf.c
 
-`c
+```c
 /*
  * Preemptive SRTF CPU Scheduling (Shortest Remaining Time First)
  * Compile: gcc preemptive_srtf.c -o preemptive_srtf
@@ -582,14 +593,14 @@ P4    3    5    10   7    2
 Average Waiting Time     = 6.50
 Average Turnaround Time  = 13.00
 */
-`
+```
 
 ---
 
 ## 5. Preemptive Priority
 **File:** CPU Scheduling Preemptive\preemptive_priority.c
 
-`c
+```c
 /*
  * Preemptive Priority CPU Scheduling (larger priority number = lower priority)
  * Compile: gcc preemptive_priority.c -o preemptive_priority
@@ -711,14 +722,14 @@ P4    3    2    2    5    2    0
 Average Waiting Time     = 3.50
 Average Turnaround Time  = 7.50
 */
-`
+```
 
 ---
 
 ## 6. Preemptive Round Robin
 **File:** CPU Scheduling Preemptive\preemptive_round_robin.c
 
-`c
+```c
 /*
  * Preemptive Round Robin CPU Scheduling
  * Compile: gcc preemptive_round_robin.c -o preemptive_round_robin
@@ -884,7 +895,7 @@ P4    3    1    7    4    3
 Average Waiting Time     = 4.50
 Average Turnaround Time  = 7.50
 */
-`
+```
 
 ---
 
@@ -893,7 +904,7 @@ Average Turnaround Time  = 7.50
 ## 7. First Fit
 **File:** Memory Allocation\first_fit.c
 
-`c
+```c
 /*
  * First Fit Memory Allocation
  * Compile: gcc first_fit.c -o first_fit
@@ -993,14 +1004,14 @@ Block    Size       Status     Process    InternalFrag
 Total internal fragmentation: 559
 Total external fragmentation: 400
 */
-`
+```
 
 ---
 
 ## 8. Best Fit
 **File:** Memory Allocation\best_fit.c
 
-`c
+```c
 /*
  * Best Fit Memory Allocation
  * Compile: gcc best_fit.c -o best_fit
@@ -1101,14 +1112,14 @@ Block    Size       Status     Process    InternalFrag
 Total internal fragmentation: 433
 Total external fragmentation: 100
 */
-`
+```
 
 ---
 
 ## 9. Worst Fit
 **File:** Memory Allocation\worst_fit.c
 
-`c
+```c
 /*
  * Worst Fit Memory Allocation
  * Compile: gcc worst_fit.c -o worst_fit
@@ -1209,7 +1220,7 @@ Block    Size       Status     Process    InternalFrag
 Total internal fragmentation: 659
 Total external fragmentation: 300
 */
-`
+```
 
 ---
 
@@ -1218,7 +1229,7 @@ Total external fragmentation: 300
 ## 10. FIFO Page Replacement
 **File:** Page Replacement\fifo_page_replacement.c
 
-`c
+```c
 /*
  * FIFO Page Replacement
  * Compile: gcc fifo_page_replacement.c -o fifo_page_replacement
@@ -1301,14 +1312,14 @@ Page     Frames               Result
 3        [ 0 2 3 ]            Hit
 Page faults: 10 / 12    Hit ratio: 0.17
 */
-`
+```
 
 ---
 
 ## 11. LRU Page Replacement
 **File:** Page Replacement\lru_page_replacement.c
 
-`c
+```c
 /*
  * LRU Page Replacement
  * Compile: gcc lru_page_replacement.c -o lru_page_replacement
@@ -1411,14 +1422,14 @@ Page     Frames               Result
 3        [ 0 3 2 ]            Hit
 Page faults: 9 / 12    Hit ratio: 0.25
 */
-`
+```
 
 ---
 
 ## 12. Optimal Page Replacement
 **File:** Page Replacement\optimal_page_replacement.c
 
-`c
+```c
 /*
  * Optimal Page Replacement
  * Compile: gcc optimal_page_replacement.c -o optimal_page_replacement
@@ -1523,7 +1534,7 @@ Page     Frames               Result
 3        [ 0 4 3 ]            Hit
 Page faults: 7 / 12    Hit ratio: 0.42
 */
-`
+```
 
 ---
 
@@ -1532,7 +1543,7 @@ Page faults: 7 / 12    Hit ratio: 0.42
 ## 13. Dining Philosophers
 **File:** dining_philosophers.c
 
-`c
+```c
 /*
  * Dining Philosophers using POSIX semaphores.
  * Classic solution: each philosopher picks up the lower-numbered chopstick
@@ -1604,14 +1615,14 @@ int main(void) {
     printf("All philosophers finished. No deadlock.\n");
     return 0;
 }
-`
+```
 
 ---
 
 ## 14. Producer-Consumer
 **File:** producer_consumer.c
 
-`c
+```c
 /*
  * Producer-Consumer using POSIX semaphores + a shared circular buffer.
  * One producer process, one consumer process (fork).
@@ -1706,14 +1717,14 @@ int main(void) {
     printf("Producer-consumer finished (%d items).\n", ITEMS);
     return 0;
 }
-`
+```
 
 ---
 
 ## 15. Readers-Writers
 **File:** readers_writers.c
 
-`c
+```c
 /*
  * Readers-Writers (first readers-writers problem: readers preference)
  * using POSIX semaphores. Threads share the data structure.
@@ -1802,14 +1813,428 @@ int main(void) {
     printf("Final shared value = %d (expected %d)\n", shared_data, WRITERS * WRITES_EACH);
     return 0;
 }
-`
+```
 
 ---
 
-## 16. Shared Memory (POSIX IPC)
+## 16. Producer-Consumer Using Pipes
+**File:** producer_consumer_pipe.c
+
+```c
+/*
+ * Producer-Consumer using an anonymous pipe + POSIX semaphores.
+ * One producer process, one consumer process (fork).
+ *
+ * Compile: gcc producer_consumer_pipe.c -o producer_consumer_pipe -pthread
+ * Run:     ./producer_consumer_pipe
+ *
+ * The pipe carries the items; the semaphores make the pipe behave like a
+ * bounded buffer of BUFFER_SIZE slots:
+ *   empty  - free slots             (init = BUFFER_SIZE)
+ *   full   - filled slots           (init = 0)
+ *   mutex  - serialises access to the logical buffer (init = 1)
+ *
+ * The pipe's kernel buffer is larger than BUFFER_SIZE, so "empty" is what
+ * actually limits how many items can be produced ahead of the consumer.
+ */
+
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <semaphore.h>
+#include <sys/mman.h>
+#include <sys/wait.h>
+
+#define BUFFER_SIZE 5
+#define ITEMS       10
+
+typedef struct {
+    sem_t empty;
+    sem_t full;
+    sem_t mutex;
+} Shared;
+
+static Shared *create_shared(void) {
+    Shared *s = mmap(NULL, sizeof(Shared), PROT_READ | PROT_WRITE,
+                     MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+    if (s == MAP_FAILED) {
+        perror("mmap");
+        exit(1);
+    }
+    /* pshared = 1 so the semaphores are visible across fork */
+    sem_init(&s->empty, 1, BUFFER_SIZE);
+    sem_init(&s->full,  1, 0);
+    sem_init(&s->mutex, 1, 1);
+    return s;
+}
+
+static int write_item(int fd, int item) {
+    const char *p = (const char *)&item;
+    size_t left = sizeof(item);
+    while (left > 0) {
+        ssize_t n = write(fd, p, left);
+        if (n < 0) {
+            if (errno == EINTR) continue;
+            return -1;
+        }
+        p += n;
+        left -= (size_t)n;
+    }
+    return 0;
+}
+
+static int read_item(int fd, int *item) {
+    char *p = (char *)item;
+    size_t left = sizeof(*item);
+    while (left > 0) {
+        ssize_t n = read(fd, p, left);
+        if (n < 0) {
+            if (errno == EINTR) continue;
+            return -1;
+        }
+        if (n == 0)
+            return -1;          /* writer closed the pipe */
+        p += n;
+        left -= (size_t)n;
+    }
+    return 0;
+}
+
+int main(void) {
+    Shared *s = create_shared();
+    int fd[2];
+
+    if (pipe(fd) == -1) {
+        perror("pipe");
+        sem_destroy(&s->empty);
+        sem_destroy(&s->full);
+        sem_destroy(&s->mutex);
+        munmap(s, sizeof(Shared));
+        return 1;
+    }
+
+    pid_t pid = fork();
+    if (pid < 0) {
+        perror("fork");
+        close(fd[0]);
+        close(fd[1]);
+        sem_destroy(&s->empty);
+        sem_destroy(&s->full);
+        sem_destroy(&s->mutex);
+        munmap(s, sizeof(Shared));
+        return 1;
+    }
+
+    if (pid == 0) {
+        /* Consumer: read ITEMS values from the pipe. */
+        int item;
+        close(fd[1]);
+        for (int i = 0; i < ITEMS; i++) {
+            sem_wait(&s->full);
+            sem_wait(&s->mutex);
+
+            if (read_item(fd[0], &item) == -1) {
+                perror("read");
+                sem_post(&s->mutex);
+                sem_post(&s->empty);
+                close(fd[0]);
+                exit(1);
+            }
+            printf("[consumer] consumed %d (%d/%d)\n", item, i + 1, ITEMS);
+
+            sem_post(&s->mutex);
+            sem_post(&s->empty);
+            usleep(150000);
+        }
+        close(fd[0]);
+        exit(0);
+    }
+
+    /* Producer: write ITEMS values into the pipe. */
+    close(fd[0]);
+    for (int i = 1; i <= ITEMS; i++) {
+        int item = i * 10;
+
+        sem_wait(&s->empty);
+        sem_wait(&s->mutex);
+
+        if (write_item(fd[1], item) == -1) {
+            perror("write");
+            sem_post(&s->mutex);
+            sem_post(&s->full);
+            close(fd[1]);
+            waitpid(pid, NULL, 0);
+            sem_destroy(&s->empty);
+            sem_destroy(&s->full);
+            sem_destroy(&s->mutex);
+            munmap(s, sizeof(Shared));
+            return 1;
+        }
+        printf("[producer] produced %d (%d/%d)\n", item, i, ITEMS);
+
+        sem_post(&s->mutex);
+        sem_post(&s->full);
+        usleep(80000);
+    }
+    close(fd[1]);
+
+    waitpid(pid, NULL, 0);
+
+    sem_destroy(&s->empty);
+    sem_destroy(&s->full);
+    sem_destroy(&s->mutex);
+    munmap(s, sizeof(Shared));
+
+    printf("Producer-consumer finished (%d items through a pipe).\n", ITEMS);
+    return 0;
+}
+
+/*
+Sample Output (ordering may vary because the two processes run concurrently):
+
+[producer] produced 10 (1/10)
+[producer] produced 20 (2/10)
+[producer] produced 30 (3/10)
+[producer] produced 40 (4/10)
+[producer] produced 50 (5/10)
+[consumer] consumed 10 (1/10)
+[producer] produced 60 (6/10)
+[consumer] consumed 20 (2/10)
+...
+[consumer] consumed 100 (10/10)
+Producer-consumer finished (10 items through a pipe).
+
+Note: the producer never gets more than BUFFER_SIZE = 5 items ahead of the
+consumer, which is enforced by the "empty" semaphore.
+*/
+```
+
+---
+
+## 17. Readers-Writers Using Processes and Pipes
+**File:** readers_writers_process.c
+
+```c
+/*
+ * Readers-Writers (first readers-writers problem: readers preference)
+ * using forked processes, process-shared POSIX semaphores and a pipe.
+ *
+ * Compile: gcc readers_writers_process.c -o readers_writers_process -pthread
+ * Run:     ./readers_writers_process
+ *
+ * Shared state lives in an anonymous MAP_SHARED mapping, so the parent and
+ * all children see the same data and counters. The semaphores are placed in
+ * that mapping with pshared = 1:
+ *
+ *   mutex     protects read_count
+ *   rw_mutex  exclusive access for writers. The first reader acquires it and
+ *             the last reader releases it, so any number of readers can read
+ *             together but a writer needs exclusive access.
+ *
+ * An anonymous pipe is used as an event log: every reader and writer sends a
+ * short record to the parent, which prints the records as they arrive. This
+ * shows that reads overlap while writes stay serialised.
+ */
+
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <semaphore.h>
+#include <sys/mman.h>
+#include <sys/wait.h>
+
+#define READERS     4
+#define WRITERS     2
+#define READS_EACH  3
+#define WRITES_EACH 2
+
+typedef struct {
+    int data;
+    int read_count;
+    sem_t mutex;
+    sem_t rw_mutex;
+} Shared;
+
+static void log_msg(int fd, const char *msg) {
+    size_t left = strlen(msg);
+    const char *p = msg;
+
+    while (left > 0) {
+        ssize_t n = write(fd, p, left);
+        if (n < 0) {
+            if (errno == EINTR) continue;
+            return;
+        }
+        p += n;
+        left -= (size_t)n;
+    }
+}
+
+static void reader(Shared *s, int id, int log_fd) {
+    char msg[160];
+
+    for (int k = 0; k < READS_EACH; k++) {
+        sem_wait(&s->mutex);
+        s->read_count++;
+        if (s->read_count == 1)
+            sem_wait(&s->rw_mutex);   /* first reader locks out writers */
+        int active = s->read_count;
+        sem_post(&s->mutex);
+
+        int value = s->data;
+        snprintf(msg, sizeof(msg),
+                 "[reader %d] reads value %d (active readers=%d)\n",
+                 id, value, active);
+        log_msg(log_fd, msg);
+        usleep(120000);               /* keep the read section open */
+
+        sem_wait(&s->mutex);
+        s->read_count--;
+        if (s->read_count == 0)
+            sem_post(&s->rw_mutex);   /* last reader lets writers in */
+        sem_post(&s->mutex);
+
+        usleep(60000);
+    }
+}
+
+static void writer(Shared *s, int id, int log_fd) {
+    char msg[160];
+
+    for (int k = 0; k < WRITES_EACH; k++) {
+        sem_wait(&s->rw_mutex);
+
+        s->data += 1;
+        snprintf(msg, sizeof(msg), "[writer %d] writes value %d\n",
+                 id, s->data);
+        log_msg(log_fd, msg);
+        usleep(150000);               /* keep the write section open */
+
+        sem_post(&s->rw_mutex);
+        usleep(80000);
+    }
+}
+
+static Shared *create_shared(void) {
+    Shared *s = mmap(NULL, sizeof(Shared), PROT_READ | PROT_WRITE,
+                     MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+    if (s == MAP_FAILED) {
+        perror("mmap");
+        exit(1);
+    }
+
+    s->data = 0;
+    s->read_count = 0;
+    sem_init(&s->mutex, 1, 1);
+    sem_init(&s->rw_mutex, 1, 1);
+    return s;
+}
+
+int main(void) {
+    Shared *s = create_shared();
+    int log_pipe[2];
+
+    if (pipe(log_pipe) == -1) {
+        perror("pipe");
+        sem_destroy(&s->mutex);
+        sem_destroy(&s->rw_mutex);
+        munmap(s, sizeof(Shared));
+        return 1;
+    }
+
+    printf("Readers-Writers: %d readers x %d reads, %d writers x %d writes\n",
+           READERS, READS_EACH, WRITERS, WRITES_EACH);
+    printf("Reader/writer events are forwarded to the parent through a pipe:\n\n");
+    fflush(stdout);
+
+    /* Create the reader processes. */
+    for (int i = 0; i < READERS; i++) {
+        pid_t pid = fork();
+        if (pid < 0) {
+            perror("fork reader");
+            return 1;
+        }
+        if (pid == 0) {
+            close(log_pipe[0]);
+            reader(s, i + 1, log_pipe[1]);
+            close(log_pipe[1]);
+            _exit(0);
+        }
+    }
+
+    /* Create the writer processes. */
+    for (int i = 0; i < WRITERS; i++) {
+        pid_t pid = fork();
+        if (pid < 0) {
+            perror("fork writer");
+            return 1;
+        }
+        if (pid == 0) {
+            close(log_pipe[0]);
+            writer(s, i + 1, log_pipe[1]);
+            close(log_pipe[1]);
+            _exit(0);
+        }
+    }
+
+    /* Parent becomes the log collector: drain the pipe until every child has
+     * closed its copy of the write end. */
+    close(log_pipe[1]);
+    char buf[256];
+    ssize_t n;
+    while ((n = read(log_pipe[0], buf, sizeof(buf) - 1)) > 0) {
+        buf[n] = '\0';
+        fputs(buf, stdout);
+    }
+    close(log_pipe[0]);
+
+    /* Reap all children. */
+    for (int i = 0; i < READERS + WRITERS; i++)
+        wait(NULL);
+
+    printf("\nFinal shared value = %d (expected %d)\n",
+           s->data, WRITERS * WRITES_EACH);
+
+    sem_destroy(&s->mutex);
+    sem_destroy(&s->rw_mutex);
+    munmap(s, sizeof(Shared));
+    return 0;
+}
+
+/*
+Sample Output (interleaving may vary):
+
+Readers-Writers: 4 readers x 3 reads, 2 writers x 2 writes
+Reader/writer events are forwarded to the parent through a pipe:
+
+[reader 1] reads value 0 (active readers=1)
+[reader 2] reads value 0 (active readers=2)
+[reader 3] reads value 0 (active readers=3)
+[reader 4] reads value 0 (active readers=4)
+[writer 1] writes value 1
+[reader 1] reads value 1 (active readers=1)
+[reader 2] reads value 1 (active readers=2)
+...
+[writer 2] writes value 4
+[reader 3] reads value 4 (active readers=1)
+[reader 4] reads value 4 (active readers=2)
+...
+Final shared value = 4 (expected 4)
+
+Notice that writers never overlap with readers or with each other, while
+reader records can show more than one active reader at the same time.
+*/
+```
+
+---
+
+## 18. Shared Memory (POSIX IPC)
 **File:** shared_memory.c
 
-`c
+```c
 /*
  * Shared memory: parent creates a POSIX shared-memory segment,
  * writes a message, child attaches and reads it, then parent unlinks.
@@ -1902,16 +2327,16 @@ int main(void) {
 
     return WIFEXITED(status) ? WEXITSTATUS(status) : 1;
 }
-`
+```
 
 ---
 
 # Deadlock Avoidance
 
-## 17. Banker's Algorithm
+## 19. Banker's Algorithm
 **File:** bankers_algorithm.c
 
-`c
+```c
 /*
  * Banker's Algorithm for Deadlock Avoidance
  * Compile: gcc bankers_algorithm.c -o bankers
@@ -2109,16 +2534,16 @@ y
 Expected: safe sequence exists (e.g. P1 P3 P4 P0 P2),
 and P1 request (1 0 2) can be granted.
 */
-`
+```
 
 ---
 
 # File System System Calls
 
-## 18. File System Calls
+## 20. File System Calls
 **File:** file_system_calls.c
 
-`c
+```c
 /*
  * File system operations using system calls (not stdio).
  * Demonstrates: creat/open, write, lseek, read, stat, unlink, mkdir, rename.
@@ -2207,7 +2632,7 @@ int main(void) {
 
 # Process & Thread Management
 
-## 19. Process Creation
+## 21. Process Creation
 **File:** process_creation.c
 
 ```c
@@ -2295,7 +2720,7 @@ int main(void) {
 
 ---
 
-## 20. Thread Creation
+## 22. Thread Creation
 **File:** thread_creation.c
 
 ```c
@@ -2410,3 +2835,847 @@ int main(void) {
 ```
 
 ---
+
+## 23. Orphan and Zombie Processes
+**File:** orphan_zombie.c
+
+```c
+/*
+ * Orphan and Zombie process demonstration.
+ *
+ * Compile: gcc orphan_zombie.c -o orphan_zombie
+ * Run:     ./orphan_zombie          (both demos)
+ *          ./orphan_zombie zombie   (zombie only)
+ *          ./orphan_zombie orphan   (orphan only)
+ *
+ * Zombie: a child exits but its parent does not call wait()/waitpid(), so the
+ *         child's entry stays in the process table with state Z until it is
+ *         reaped.
+ *
+ * Orphan: a parent exits while its child is still running. The child is then
+ *         reparented to init (PID 1) or to a subreaper, which reaps it.
+ *
+ * The ps output is printed by a separate command so the states can be seen
+ * while the demo is running.
+ */
+
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+static void show_process(pid_t pid) {
+    char cmd[160];
+
+    printf("  ps for PID %ld:\n", (long)pid);
+    fflush(stdout);
+    snprintf(cmd, sizeof(cmd),
+             "COLUMNS=120 LINES=24 ps -o pid=,ppid=,stat=,comm= -p %ld",
+             (long)pid);
+    if (system(cmd) != 0)
+        printf("  (process is gone or ps is unavailable)\n");
+}
+
+static void demo_zombie(void) {
+    printf("\n=== ZOMBIE PROCESS ===\n");
+    fflush(stdout);         /* do not let the child inherit buffered output */
+
+    pid_t child = fork();
+    if (child < 0) {
+        perror("fork zombie child");
+        return;
+    }
+
+    if (child == 0) {
+        printf("[zombie child] PID %d exiting immediately\n", getpid());
+        fflush(stdout);
+        _exit(0);
+    }
+
+    printf("[parent] child PID %d has exited, but wait() is delayed...\n",
+           child);
+    sleep(2);
+
+    printf("[parent] the child should now be a zombie (STAT = Z):\n");
+    show_process(child);
+
+    int status;
+    pid_t reaped = waitpid(child, &status, 0);
+    if (reaped == child) {
+        printf("[parent] waitpid() reaped PID %d", child);
+        if (WIFEXITED(status))
+            printf(" (exit status %d)", WEXITSTATUS(status));
+        printf("\n");
+    } else {
+        perror("waitpid");
+    }
+
+    printf("[parent] after reaping, the PID no longer exists:\n");
+    show_process(child);
+}
+
+static void demo_orphan(void) {
+    printf("\n=== ORPHAN PROCESS ===\n");
+    fflush(stdout);         /* do not let the children inherit buffered output */
+
+    int pid_pipe[2];
+    if (pipe(pid_pipe) == -1) {
+        perror("pipe");
+        return;
+    }
+
+    pid_t parent = fork();
+    if (parent < 0) {
+        perror("fork parent");
+        close(pid_pipe[0]);
+        close(pid_pipe[1]);
+        return;
+    }
+
+    if (parent == 0) {
+        /* Intermediate parent: create a child, report its PID, then exit
+         * without waiting, leaving the child orphaned. */
+        close(pid_pipe[0]);
+
+        pid_t child = fork();
+        if (child < 0) {
+            perror("fork orphan child");
+            _exit(1);
+        }
+
+        if (child == 0) {
+            close(pid_pipe[1]);
+            printf("[orphan child] PID %d started, PPID is %d\n",
+                   getpid(), getppid());
+            fflush(stdout);
+            sleep(3);
+            printf("[orphan child] after parent exit, PPID is now %d\n",
+                   getppid());
+            fflush(stdout);
+            _exit(0);
+        }
+
+        ssize_t written = write(pid_pipe[1], &child, sizeof(child));
+        (void)written;
+        close(pid_pipe[1]);
+
+        printf("[parent] created child PID %d and is exiting without waiting\n",
+               child);
+        fflush(stdout);
+        _exit(0);
+    }
+
+    close(pid_pipe[1]);
+
+    pid_t orphan = -1;
+    ssize_t got;
+    do {
+        got = read(pid_pipe[0], &orphan, sizeof(orphan));
+    } while (got < 0 && errno == EINTR);
+    close(pid_pipe[0]);
+
+    int status;
+    waitpid(parent, &status, 0);
+
+    if (got == (ssize_t)sizeof(orphan)) {
+        printf("[main] intermediate parent exited; PID %d is an orphan\n",
+               orphan);
+        sleep(1);
+        printf("[main] the orphan's parent should now be init/subreaper:\n");
+        show_process(orphan);
+        printf("[main] waiting for the orphan to finish...\n");
+        sleep(3);
+    }
+
+    printf("[main] orphan demo complete (its new parent reaps the orphan).\n");
+}
+
+int main(int argc, char *argv[]) {
+    int do_zombie = 1;
+    int do_orphan = 1;
+
+    if (argc > 2) {
+        fprintf(stderr, "Usage: %s [zombie|orphan]\n", argv[0]);
+        return 1;
+    }
+
+    if (argc == 2) {
+        if (strcmp(argv[1], "zombie") == 0) {
+            do_orphan = 0;
+        } else if (strcmp(argv[1], "orphan") == 0) {
+            do_zombie = 0;
+        } else {
+            fprintf(stderr, "Usage: %s [zombie|orphan]\n", argv[0]);
+            return 1;
+        }
+    }
+
+    printf("Orphan and Zombie Process Demonstration\n");
+    printf("Main process PID: %d, PPID: %d\n", getpid(), getppid());
+    fflush(stdout);
+
+    if (do_zombie)
+        demo_zombie();
+    if (do_orphan)
+        demo_orphan();
+
+    return 0;
+}
+
+/*
+Sample Output (PIDs and timing vary):
+
+Orphan and Zombie Process Demonstration
+Main process PID: 4201, PPID: 3100
+
+=== ZOMBIE PROCESS ===
+[zombie child] PID 4202 exiting immediately
+[parent] child PID 4202 has exited, but wait() is delayed...
+[parent] the child should now be a zombie (STAT = Z):
+  ps for PID 4202:
+   4202   4201 Z    orphan_zombie
+[parent] waitpid() reaped PID 4202 (exit status 0)
+[parent] after reaping, the PID no longer exists:
+  ps for PID 4202:
+  (process is gone or ps is unavailable)
+
+=== ORPHAN PROCESS ===
+[orphan child] PID 4204 started, PPID is 4203
+[parent] created child PID 4204 and is exiting without waiting
+[main] intermediate parent exited; PID 4204 is an orphan
+[main] the orphan's parent should now be init/subreaper:
+  ps for PID 4204:
+   4204      1 S    orphan_zombie
+[main] waiting for the orphan to finish...
+[orphan child] after parent exit, PPID is now 1
+[main] orphan demo complete (its new parent reaps the orphan).
+*/
+```
+
+---
+
+## 24. FCFS Disk Scheduling
+**File:** Disk Scheduling\\fcfs_disk_scheduling.c
+
+```c
+/*
+ * FCFS Disk Scheduling
+ * Compile: gcc fcfs_disk_scheduling.c -o fcfs_disk_scheduling
+ * Run:     ./fcfs_disk_scheduling
+ *
+ * Services requests in the order they arrive, starting from the initial
+ * head position.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_REQUESTS 100
+
+int main(void) {
+    int n, head, req[MAX_REQUESTS];
+
+    printf("Number of requests: ");
+    if (scanf("%d", &n) != 1 || n < 1 || n > MAX_REQUESTS) {
+        printf("Invalid number of requests.\n");
+        return 1;
+    }
+
+    printf("Enter %d request cylinders:\n", n);
+    for (int i = 0; i < n; i++) {
+        if (scanf("%d", &req[i]) != 1 || req[i] < 0) {
+            printf("Invalid request.\n");
+            return 1;
+        }
+    }
+
+    printf("Initial head position: ");
+    if (scanf("%d", &head) != 1 || head < 0) {
+        printf("Invalid head position.\n");
+        return 1;
+    }
+
+    int total = 0;
+    int current = head;
+
+    printf("\nService order: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d", req[i]);
+        if (i + 1 < n) printf(" -> ");
+        total += abs(req[i] - current);
+        current = req[i];
+    }
+
+    printf("\nTotal head movement: %d cylinders\n", total);
+    printf("Average seek distance: %.2f cylinders/request\n",
+           (double)total / n);
+    return 0;
+}
+
+/*
+Sample Input:
+8
+98 183 37 122 14 124 65 67
+53
+
+Sample Output:
+Service order: 98 -> 183 -> 37 -> 122 -> 14 -> 124 -> 65 -> 67
+Total head movement: 640 cylinders
+Average seek distance: 80.00 cylinders/request
+*/
+```
+
+---
+
+## 25. SSTF Disk Scheduling
+**File:** Disk Scheduling\\sstf_disk_scheduling.c
+
+```c
+/*
+ * SSTF (Shortest Seek Time First) Disk Scheduling
+ * Compile: gcc sstf_disk_scheduling.c -o sstf_disk_scheduling
+ * Run:     ./sstf_disk_scheduling
+ *
+ * Always services the pending request closest to the current head position.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+#define MAX_REQUESTS 100
+
+int main(void) {
+    int n, head, req[MAX_REQUESTS];
+    int served[MAX_REQUESTS] = {0};
+
+    printf("Number of requests: ");
+    if (scanf("%d", &n) != 1 || n < 1 || n > MAX_REQUESTS) {
+        printf("Invalid number of requests.\n");
+        return 1;
+    }
+
+    printf("Enter %d request cylinders:\n", n);
+    for (int i = 0; i < n; i++) {
+        if (scanf("%d", &req[i]) != 1 || req[i] < 0) {
+            printf("Invalid request.\n");
+            return 1;
+        }
+    }
+
+    printf("Initial head position: ");
+    if (scanf("%d", &head) != 1 || head < 0) {
+        printf("Invalid head position.\n");
+        return 1;
+    }
+
+    int total = 0;
+    int current = head;
+
+    printf("\nService order: ");
+    for (int step = 0; step < n; step++) {
+        int best = -1;
+        int best_dist = INT_MAX;
+
+        for (int i = 0; i < n; i++) {
+            if (served[i]) continue;
+            int dist = abs(req[i] - current);
+            if (dist < best_dist) {
+                best_dist = dist;
+                best = i;
+            }
+        }
+
+        printf("%d", req[best]);
+        if (step + 1 < n) printf(" -> ");
+
+        total += best_dist;
+        current = req[best];
+        served[best] = 1;
+    }
+
+    printf("\nTotal head movement: %d cylinders\n", total);
+    printf("Average seek distance: %.2f cylinders/request\n",
+           (double)total / n);
+    return 0;
+}
+
+/*
+Sample Input:
+8
+98 183 37 122 14 124 65 67
+53
+
+Sample Output:
+Service order: 65 -> 67 -> 37 -> 14 -> 98 -> 122 -> 124 -> 183
+Total head movement: 236 cylinders
+Average seek distance: 29.50 cylinders/request
+*/
+```
+
+---
+
+## 26. SCAN Disk Scheduling
+**File:** Disk Scheduling\\scan_disk_scheduling.c
+
+```c
+/*
+ * SCAN (Elevator) Disk Scheduling
+ * Compile: gcc scan_disk_scheduling.c -o scan_disk_scheduling
+ * Run:     ./scan_disk_scheduling
+ *
+ * The head starts by moving towards higher cylinders. It services every
+ * request on the way, travels to the last cylinder, then reverses and
+ * services the remaining requests on the way down.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_REQUESTS 100
+
+static void sort_ascending(int a[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = a[i];
+        int j = i - 1;
+        while (j >= 0 && a[j] > key) {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = key;
+    }
+}
+
+int main(void) {
+    int n, head, disk_max, req[MAX_REQUESTS];
+
+    printf("Number of requests: ");
+    if (scanf("%d", &n) != 1 || n < 1 || n > MAX_REQUESTS) {
+        printf("Invalid number of requests.\n");
+        return 1;
+    }
+
+    printf("Enter %d request cylinders:\n", n);
+    for (int i = 0; i < n; i++) {
+        if (scanf("%d", &req[i]) != 1 || req[i] < 0) {
+            printf("Invalid request.\n");
+            return 1;
+        }
+    }
+
+    printf("Initial head position: ");
+    if (scanf("%d", &head) != 1 || head < 0) {
+        printf("Invalid head position.\n");
+        return 1;
+    }
+
+    printf("Highest cylinder number: ");
+    if (scanf("%d", &disk_max) != 1 || disk_max < 1 || head > disk_max) {
+        printf("Invalid disk size.\n");
+        return 1;
+    }
+    for (int i = 0; i < n; i++) {
+        if (req[i] > disk_max) {
+            printf("Request %d is outside the disk.\n", req[i]);
+            return 1;
+        }
+    }
+
+    sort_ascending(req, n);
+
+    int upper[MAX_REQUESTS], lower[MAX_REQUESTS];
+    int uc = 0, lc = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (req[i] >= head)
+            upper[uc++] = req[i];
+        else
+            lower[lc++] = req[i];
+    }
+
+    /* Lower side is serviced on the way down: largest first. */
+    for (int i = 0; i < lc / 2; i++) {
+        int tmp = lower[i];
+        lower[i] = lower[lc - 1 - i];
+        lower[lc - 1 - i] = tmp;
+    }
+
+    int order[MAX_REQUESTS], oc = 0;
+    for (int i = 0; i < uc; i++) order[oc++] = upper[i];
+    for (int i = 0; i < lc; i++) order[oc++] = lower[i];
+
+    printf("\nDirection: up (towards higher cylinders), then reverse\n");
+    printf("Service order: ");
+    for (int i = 0; i < oc; i++) {
+        printf("%d", order[i]);
+        if (i + 1 < oc) printf(" -> ");
+    }
+    printf("\n");
+
+    int total = disk_max - head;          /* travel to the end */
+    if (lc > 0)
+        total += disk_max - lower[lc - 1]; /* sweep back down */
+
+    printf("Total head movement: %d cylinders\n", total);
+    printf("Average seek distance: %.2f cylinders/request\n",
+           (double)total / n);
+    return 0;
+}
+
+/*
+Sample Input:
+8
+98 183 37 122 14 124 65 67
+53
+199
+
+Sample Output:
+Direction: up (towards higher cylinders), then reverse
+Service order: 65 -> 67 -> 98 -> 122 -> 124 -> 183 -> 37 -> 14
+Total head movement: 331 cylinders
+Average seek distance: 41.38 cylinders/request
+*/
+```
+
+---
+
+## 27. C-SCAN Disk Scheduling
+**File:** Disk Scheduling\\cscan_disk_scheduling.c
+
+```c
+/*
+ * C-SCAN (Circular SCAN) Disk Scheduling
+ * Compile: gcc cscan_disk_scheduling.c -o cscan_disk_scheduling
+ * Run:     ./cscan_disk_scheduling
+ *
+ * The head moves towards higher cylinders, services requests up to the last
+ * cylinder, jumps back to cylinder 0 (the return jump is not counted as seek
+ * time), then moves up again servicing the remaining requests.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_REQUESTS 100
+
+static void sort_ascending(int a[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = a[i];
+        int j = i - 1;
+        while (j >= 0 && a[j] > key) {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = key;
+    }
+}
+
+int main(void) {
+    int n, head, disk_max, req[MAX_REQUESTS];
+
+    printf("Number of requests: ");
+    if (scanf("%d", &n) != 1 || n < 1 || n > MAX_REQUESTS) {
+        printf("Invalid number of requests.\n");
+        return 1;
+    }
+
+    printf("Enter %d request cylinders:\n", n);
+    for (int i = 0; i < n; i++) {
+        if (scanf("%d", &req[i]) != 1 || req[i] < 0) {
+            printf("Invalid request.\n");
+            return 1;
+        }
+    }
+
+    printf("Initial head position: ");
+    if (scanf("%d", &head) != 1 || head < 0) {
+        printf("Invalid head position.\n");
+        return 1;
+    }
+
+    printf("Highest cylinder number: ");
+    if (scanf("%d", &disk_max) != 1 || disk_max < 1 || head > disk_max) {
+        printf("Invalid disk size.\n");
+        return 1;
+    }
+    for (int i = 0; i < n; i++) {
+        if (req[i] > disk_max) {
+            printf("Request %d is outside the disk.\n", req[i]);
+            return 1;
+        }
+    }
+
+    sort_ascending(req, n);
+
+    int upper[MAX_REQUESTS], lower[MAX_REQUESTS];
+    int uc = 0, lc = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (req[i] >= head)
+            upper[uc++] = req[i];
+        else
+            lower[lc++] = req[i];
+    }
+
+    /* Both groups are serviced upwards; the jump itself is not counted. */
+    int order[MAX_REQUESTS], oc = 0;
+    for (int i = 0; i < uc; i++) order[oc++] = upper[i];
+    for (int i = 0; i < lc; i++) order[oc++] = lower[i];
+
+    printf("\nDirection: up, jump to 0, then up again\n");
+    printf("Service order: ");
+    for (int i = 0; i < oc; i++) {
+        printf("%d", order[i]);
+        if (i + 1 < oc) printf(" -> ");
+    }
+    printf("\n");
+
+    int total = disk_max - head;          /* head to the end */
+    if (lc > 0)
+        total += disk_max + lower[lc - 1]; /* jump 0->..., then 0->last lower */
+
+    printf("Total head movement: %d cylinders\n", total);
+    printf("Average seek distance: %.2f cylinders/request\n",
+           (double)total / n);
+    return 0;
+}
+
+/*
+Sample Input:
+8
+98 183 37 122 14 124 65 67
+53
+199
+
+Sample Output:
+Direction: up, jump to 0, then up again
+Service order: 65 -> 67 -> 98 -> 122 -> 124 -> 183 -> 14 -> 37
+Total head movement: 382 cylinders
+Average seek distance: 47.75 cylinders/request
+*/
+```
+
+---
+
+## 28. LOOK Disk Scheduling
+**File:** Disk Scheduling\\look_disk_scheduling.c
+
+```c
+/*
+ * LOOK Disk Scheduling
+ * Compile: gcc look_disk_scheduling.c -o look_disk_scheduling
+ * Run:     ./look_disk_scheduling
+ *
+ * Like SCAN, but the head reverses at the last pending request instead of
+ * travelling all the way to the end of the disk.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_REQUESTS 100
+
+static void sort_ascending(int a[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = a[i];
+        int j = i - 1;
+        while (j >= 0 && a[j] > key) {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = key;
+    }
+}
+
+int main(void) {
+    int n, head, req[MAX_REQUESTS];
+
+    printf("Number of requests: ");
+    if (scanf("%d", &n) != 1 || n < 1 || n > MAX_REQUESTS) {
+        printf("Invalid number of requests.\n");
+        return 1;
+    }
+
+    printf("Enter %d request cylinders:\n", n);
+    for (int i = 0; i < n; i++) {
+        if (scanf("%d", &req[i]) != 1 || req[i] < 0) {
+            printf("Invalid request.\n");
+            return 1;
+        }
+    }
+
+    printf("Initial head position: ");
+    if (scanf("%d", &head) != 1 || head < 0) {
+        printf("Invalid head position.\n");
+        return 1;
+    }
+
+    sort_ascending(req, n);
+
+    int upper[MAX_REQUESTS], lower[MAX_REQUESTS];
+    int uc = 0, lc = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (req[i] >= head)
+            upper[uc++] = req[i];
+        else
+            lower[lc++] = req[i];
+    }
+
+    /* Lower side is serviced downwards: largest first. */
+    for (int i = 0; i < lc / 2; i++) {
+        int tmp = lower[i];
+        lower[i] = lower[lc - 1 - i];
+        lower[lc - 1 - i] = tmp;
+    }
+
+    int order[MAX_REQUESTS], oc = 0;
+    for (int i = 0; i < uc; i++) order[oc++] = upper[i];
+    for (int i = 0; i < lc; i++) order[oc++] = lower[i];
+
+    printf("\nDirection: up (towards higher cylinders), then reverse\n");
+    printf("Service order: ");
+    for (int i = 0; i < oc; i++) {
+        printf("%d", order[i]);
+        if (i + 1 < oc) printf(" -> ");
+    }
+    printf("\n");
+
+    int total;
+    if (uc > 0) {
+        total = upper[uc - 1] - head;           /* to highest request */
+        if (lc > 0)
+            total += upper[uc - 1] - lower[lc - 1]; /* down to lowest */
+    } else {
+        total = head - lower[lc - 1];           /* no request above */
+    }
+
+    printf("Total head movement: %d cylinders\n", total);
+    printf("Average seek distance: %.2f cylinders/request\n",
+           (double)total / n);
+    return 0;
+}
+
+/*
+Sample Input:
+8
+98 183 37 122 14 124 65 67
+53
+
+Sample Output:
+Direction: up (towards higher cylinders), then reverse
+Service order: 65 -> 67 -> 98 -> 122 -> 124 -> 183 -> 37 -> 14
+Total head movement: 299 cylinders
+Average seek distance: 37.38 cylinders/request
+*/
+```
+
+---
+
+## 29. C-LOOK Disk Scheduling
+**File:** Disk Scheduling\\clook_disk_scheduling.c
+
+```c
+/*
+ * C-LOOK (Circular LOOK) Disk Scheduling
+ * Compile: gcc clook_disk_scheduling.c -o clook_disk_scheduling
+ * Run:     ./clook_disk_scheduling
+ *
+ * Like C-SCAN, but the head jumps from the highest pending request to the
+ * lowest pending request instead of travelling to the disk boundaries. The
+ * return jump is not counted as seek time.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_REQUESTS 100
+
+static void sort_ascending(int a[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = a[i];
+        int j = i - 1;
+        while (j >= 0 && a[j] > key) {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = key;
+    }
+}
+
+int main(void) {
+    int n, head, req[MAX_REQUESTS];
+
+    printf("Number of requests: ");
+    if (scanf("%d", &n) != 1 || n < 1 || n > MAX_REQUESTS) {
+        printf("Invalid number of requests.\n");
+        return 1;
+    }
+
+    printf("Enter %d request cylinders:\n", n);
+    for (int i = 0; i < n; i++) {
+        if (scanf("%d", &req[i]) != 1 || req[i] < 0) {
+            printf("Invalid request.\n");
+            return 1;
+        }
+    }
+
+    printf("Initial head position: ");
+    if (scanf("%d", &head) != 1 || head < 0) {
+        printf("Invalid head position.\n");
+        return 1;
+    }
+
+    sort_ascending(req, n);
+
+    int upper[MAX_REQUESTS], lower[MAX_REQUESTS];
+    int uc = 0, lc = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (req[i] >= head)
+            upper[uc++] = req[i];
+        else
+            lower[lc++] = req[i];
+    }
+
+    /* Both groups are serviced upwards; the circular jump is not counted. */
+    int order[MAX_REQUESTS], oc = 0;
+    for (int i = 0; i < uc; i++) order[oc++] = upper[i];
+    for (int i = 0; i < lc; i++) order[oc++] = lower[i];
+
+    printf("\nDirection: up, jump to lowest pending request, then up again\n");
+    printf("Service order: ");
+    for (int i = 0; i < oc; i++) {
+        printf("%d", order[i]);
+        if (i + 1 < oc) printf(" -> ");
+    }
+    printf("\n");
+
+    int total = 0;
+    if (uc > 0)
+        total += upper[uc - 1] - head;   /* to highest request */
+    if (lc > 0)
+        total += lower[lc - 1] - lower[0]; /* lowest -> highest lower */
+
+    printf("Total head movement: %d cylinders\n", total);
+    printf("Average seek distance: %.2f cylinders/request\n",
+           (double)total / n);
+    return 0;
+}
+
+/*
+Sample Input:
+8
+98 183 37 122 14 124 65 67
+53
+
+Sample Output:
+Direction: up, jump to lowest pending request, then up again
+Service order: 65 -> 67 -> 98 -> 122 -> 124 -> 183 -> 14 -> 37
+Total head movement: 153 cylinders
+Average seek distance: 19.12 cylinders/request
+*/
+```

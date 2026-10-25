@@ -22,7 +22,8 @@ what it is doing so you can read the output as notes.
 | `12_processes.sh` | `$$`, `$!`, background jobs, `wait`, `kill`, `ps` |
 | `13_system_info.sh` | system report using `uname`, `free`, `df`, `du` |
 | `14_menu.sh` | interactive menu combining functions, `case` and loops |
-| `run_all.sh` | runs lessons 01-14 in order |
+| `15_linux_commands.sh` | common commands: `ls`, `cp`, `grep`, `sort`, `find`, `chmod`, `df`, `ps` |
+| `run_all.sh` | runs lessons 01-15 in order |
 
 ## How to run (Linux / WSL / Git Bash)
 

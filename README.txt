@@ -25,6 +25,8 @@ Process Synchronization & Concurrency:
   gcc dining_philosophers.c        -o dining_philosophers -pthread
   gcc producer_consumer.c          -o producer_consumer -pthread
   gcc readers_writers.c            -o readers_writers -pthread
+  gcc producer_consumer_pipe.c     -o producer_consumer_pipe -pthread
+  gcc readers_writers_process.c    -o readers_writers_process -pthread
   gcc shared_memory.c              -o shared_memory -lrt
 
 Deadlock Avoidance:
@@ -33,8 +35,18 @@ Deadlock Avoidance:
 Process Creation & Exec:
   gcc process_creation.c           -o process_creation
   gcc two_child_processes.c        -o two_child_processes
+  gcc orphan_zombie.c              -o orphan_zombie
   gcc print_even_numbers.c         -o print_even_numbers
   gcc child_exec_even.c            -o child_exec_even
+
+Disk Scheduling:
+  gcc fcfs_disk_scheduling.c       -o fcfs_disk_scheduling
+  gcc sstf_disk_scheduling.c       -o sstf_disk_scheduling
+  gcc scan_disk_scheduling.c       -o scan_disk_scheduling
+  gcc cscan_disk_scheduling.c      -o cscan_disk_scheduling
+  gcc look_disk_scheduling.c       -o look_disk_scheduling
+  gcc clook_disk_scheduling.c      -o clook_disk_scheduling
+  (run these from the "Disk Scheduling" folder)
 
 Thread Creation:
   gcc thread_creation.c            -o thread_creation -pthread
@@ -48,3 +60,5 @@ Linux Shell Scripts (basic lessons are in the "Shell Scripts" folder):
 
 File System:
   gcc file_system_calls.c          -o file_system_calls
+
+Full syllabus coverage map: SYLLABUS_COVERAGE.md

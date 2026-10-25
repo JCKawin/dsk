@@ -26,6 +26,7 @@ scripts=(
     12_processes.sh
     13_system_info.sh
     14_menu.sh
+    15_linux_commands.sh
 )
 
 failed=0
